@@ -57,11 +57,15 @@ const books = [
 // console.log("Ecco i libri con più di 300 pagine:", longBooks);
 
 // Creare un array (longBooksTitles) che contiene solo i titoli dei libri contenuti in longBooks.
+
+// const longBooksTitles = longBooks.map((book) => book.title);
+// console.log("I titoli dei libr sono:", longBooksTitles);
+
 // Stampa in console ogni titolo nella console.
 
-// const longBooksTitles = longBooks.forEach((book) =>
-//   console.log("I titoli sono:", book.title)
-// );
+// longBooksTitles.forEach((title) => {
+//   console.log(title);
+// });
 
 // Snack 2 - Il primo libro scontato
 
@@ -83,12 +87,9 @@ const books = [
 //   console.log(newPrice);
 //   const newPriceBook = newPrice + `€`;
 //   console.log(newPriceBook);
-//   book.price = newPriceBook;
-//   console.log(book.price);
-//   console.log(book);
-//   return book;
-// });
 
+//   return { ...book, price: newPriceBook };
+// });
 // console.log("Libri scontati:", discountedBooks);
 
 // Salva in una variabile (fullPricedBook) il primo elemento di discountedBooks che ha un prezzo intero (senza centesimi).
@@ -96,7 +97,6 @@ const books = [
 // const fullPricedBook = discountedBooks.find(
 //   (book) => parseFloat(book.price.replace(`€`, ``)) % 1 === 0
 // );
-
 // console.log("Primo libro con prezzo intero:", fullPricedBook);
 
 // Snack 3 - Ordinare gli Autori
@@ -108,8 +108,9 @@ const books = [
 
 // Crea una variabile booleana (areAuthorsAdults) per verificare se gli autori sono tutti maggiorenni.
 
-// const areAuthorsAdults = authors.every((author) => author.age > 18);
+// const areAuthorsAdults = authors.every((author) => author.age >= 18);
 // console.log("Tutti gli autori sono maggioreni?Risposta:", areAuthorsAdults);
+
 // Ordina l’array authors in base all’età, senza creare un nuovo array.
 // (se areAuthorsAdult è true, ordina in ordine crescente, altrimenti in ordine decrescente)
 
@@ -119,6 +120,7 @@ const books = [
 //   } else {
 //     return b.age - a.age;
 //   }
+// altra soluzione di Hyur: authors.sort((a,b) => (a.age - b.age)*(areAuthorsAdults ? 1 : -1));
 // });
 // console.log("Ordine crescente autori:", authors);
 
@@ -143,3 +145,74 @@ const books = [
 
 // Usando la l'API http://localhost:3333/books/{id} usa la combinazione di .map() e Promise.all(), per creare una funzione (getBooks) che a partire da un array di id (ids), ritorna una promise che risolve un array di libri (books).
 // Testala con l’array [2, 13, 7, 21, 19] .
+
+// const ids = [2, 13, 7, 21, 19];
+
+// async function fetchJson(url) {
+//   const response = await fetch(url);
+//   const obj = await response.json();
+//   return obj;
+// }
+
+// async function getBooks(ids) {
+//   const responses = ids.map((id) =>
+//     fetchJson(`http://localhost:3333/books/${id}`)
+//   );
+//   const results = await Promise.all(responses);
+//   return results;
+// }
+
+// (async () => {
+//   const results = await getBooks(ids);
+//   console.log("Ecco i risultati:", results);
+// })();
+
+// Snack 6 (Bonus) - Ordina i libri
+
+// Crea una variabile booleana (areThereAvailableBooks) per verificare se c’è almeno un libro disponibile.
+
+// const areThereAvailableBooks = books.some((book) => book.available);
+// console.log(areThereAvailableBooks);
+
+// Crea un array (booksByPrice) con gli elementi di books ordinati in base al prezzo (crescente).
+
+// const booksByPrice = [...books].sort((a, b) => {
+//   return (
+//     parseFloat(a.price.replace(`€`, ``)) - parseFloat(b.price.replace(`€`, ``))
+//   );
+// });
+// console.log("Prezzi libri ordinati in ordine crescente:", booksByPrice);
+
+// Ordina l’array booksByPrice in base alla disponibilità (prima quelli disponibili), senza creare un nuovo array.
+
+// booksByPrice.sort((a, b) =>
+//   a.available === b.available ? 0 : a.available ? -1 : 1
+// );
+// console.log(booksByPrice);
+
+// Snack 7 (Bonus) - Analizza i tag
+
+// Usa reduce per creare un oggetto (tagCounts) che conta quante volte ogni tag viene usato tra i libri.
+
+const tagCounts = books.reduce((acc, book) => {
+  book.tags.forEach((element) => {
+    acc[element] = (acc[element] || 0) + 1;
+  });
+
+  return acc;
+}, {});
+
+console.log(tagCounts);
+
+// SOLUZIONE DI HYUR:
+
+//const tagCounts = books.reduce((acc, b)=>{
+// b.tags.forEach(tag =>{
+// if(acc[tag]){
+// acc[tag]++
+//}else{
+// acc[tag]= 1
+//}
+// });
+// return acc;
+// },{})
