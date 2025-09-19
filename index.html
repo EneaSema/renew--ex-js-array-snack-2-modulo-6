@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snack Array Avanzati</title>
+  </head>
+  <body>
+    <h1>Snack Array Avanzati</h1>
+
+    <p>
+      const books = [<br />
+      { <br />
+      title: "React Billionaire", <br />
+      pages: 250, <br />
+      author: { <br />
+      name: 'Alice', <br />
+      age: 35 <br />
+      }, <br />
+      available: false, <br />
+      price: '101€', <br />
+      tags: ['advanced', 'js', 'react', 'senior'] <br />
+      }, <br />
+      { <br />
+      title: "Advanced JS", <br />
+      pages: 500, <br />
+      author: { <br />
+      name: 'Bob', <br />
+      age: 20 <br />
+      }, <br />
+      available: true, <br />
+      price: '25€', <br />
+      tags: ['advanced', 'js', 'mid-senior'] <br />
+      }, <br />
+      { <br />
+      title: "CSS Secrets", <br />
+      pages: 320, <br />
+      author: { <br />
+      name: 'Alice', <br />
+      age: 17 <br />
+      }, <br />
+      available: true, <br />
+      price: '8€', <br />
+      tags: ['html', 'css', 'junior'] <br />
+      }, <br />
+      { <br />
+      title: "HTML Mastery", <br />
+      pages: 200, <br />
+      author: { <br />
+      name: 'Charlie', <br />
+      age: 50 <br />
+      }, <br />
+      available: false, <br />
+      price: '48€', <br />
+      tags: ['html', 'advanced', 'junior', 'mid-senior'] <br />
+      }, <br />
+      ]; <br />
+    </p>
+    <h2><b>Snack 1 - Filtra e Modifica</b></h2>
+    <span>Crea una funzione che somma due numeri.</span>
+    <ul>
+      <li>
+        Crea un array (<b>longBooks</b> ) con i libri che hanno più di 300
+        pagine;
+      </li>
+      <li>
+        Creare un array (<b>longBooksTitles</b> ) che contiene solo i titoli dei
+        libri contenuti in longBooks.
+      </li>
+      <li>Stampa in console ogni titolo nella console.</li>
+    </ul>
+    <h2><b>Snack 2 - Il primo libro scontato</b></h2>
+    <ul>
+      <li>
+        Creare un array (<b>availableBooks</b>) che contiene tutti i libri
+        disponibili.
+      </li>
+      <li>
+        Crea un array (<b>discountedBooks</b> ) con gli <b>availableBooks</b>,
+        ciascuno con il prezzo scontato del 20% (mantieni lo stesso formato e
+        arrotonda al centesimo)
+      </li>
+      <li>
+        Salva in una variabile (<b>fullPricedBook</b> ) il primo elemento di
+        <b>discountedBooks</b> che ha un prezzo intero (senza centesimi).
+      </li>
+    </ul>
+    <h2><b>Snack 3 - Ordinare gli Autori</b></h2>
+    <ul>
+      <li>
+        Creare un array (<b>authors</b>) che contiene gli autori dei libri.
+      </li>
+      <li>
+        Crea una variabile booleana (<b>areAuthorsAdults</b> ) per verificare se
+        gli autori sono tutti maggiorenni.
+      </li>
+      <li>
+        Ordina la array <b>authors</b> in base all’età, senza creare un nuovo
+        array. (se <b>areAuthorsAdult </b> è true, ordina in ordine crescente,
+        altrimenti in ordine decrescente)
+      </li>
+    </ul>
+    <h2><b>Snack 4 - Calcola la età media</b></h2>
+    <ul>
+      <li>
+        Creare un array (<b>ages</b>) che contiene le età degli autori dei
+        libri.
+      </li>
+      <li>Calcola la somma delle età (<b>agesSum</b>) usando reduce.</li>
+      <li>Stampa in console la età media degli autori dei libri.</li>
+    </ul>
+    <h2><b>Snack 5 (Bonus) - Raccogli i libri</b></h2>
+    <p>
+      Usando la l'API <b>http://localhost:3333/books/{id}</b> usa la
+      combinazione di <b>.map()</b> e <b>Promise.all()</b>, per creare una
+      funzione (<b>getBooks</b>) che a partire da un array di id (<b>ids</b> ),
+      ritorna una promise che risolve un array di libri (<b>books</b> ). Testala
+      con l’array [2, 13, 7, 21, 19] .
+    </p>
+
+    <script src="snacks_array.js"></script>
+  </body>
+</html>
